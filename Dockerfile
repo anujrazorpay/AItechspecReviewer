@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONPATH=/app \
-    OPENAI_API_KEY=OPENAI_API_KEY
+    OPENAI_API_KEY=Helloworld
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -27,6 +27,9 @@ RUN mkdir -p uploads static/css static/images .streamlit
 
 # Copy project files
 COPY . .
+
+# Ensure .streamlit directory has correct permissions
+RUN chmod -R 755 .streamlit
 
 # Expose port
 EXPOSE 8501
